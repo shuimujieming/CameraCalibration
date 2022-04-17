@@ -1,19 +1,21 @@
 #include <iostream>
 #include "opencv2/opencv.hpp"
 //相机标定程序声明
-void CameraCal();
+void CameraCal_SB();
+int CameraCal();
 
 //主函数
 int main() {
+    //CameraCal_SB();
     CameraCal();
     return 0;
 }
 //相机标定
-void CameraCal()
+void CameraCal_SB()
 {
-    std::string img_path = "../photo//*.jpg";//相机标定图片路径
+    std::string img_path = "../pictures/HandEye/*.jpg";//相机标定图片路径
     float image_zoom = 0.25f;//图片显示缩放比例
-    int board_w = 12,board_h = 9;//每行角点数，每列角点数
+    int board_w = 11,board_h = 8;//每行角点数，每列角点数
     cv::Size board_sz = cv::Size(board_w, board_h);	//标定板大小
     int board_n = board_w * board_h;//角点总数
 
@@ -229,5 +231,233 @@ void CameraCal()
 
         cv::imshow("Undistorted", image);
         if ((cv::waitKey(0) & 255) == 27)break;
+    }
+}
+
+
+
+
+int CameraCal()
+{
+    std::string img_path = "../pictures/HandEye/*.jpg";
+    int n_boards = 16;//标定板图片数目
+    float image_zoom = 1.0f;//图片缩放比例
+    float delay = 1.0f;//检测延迟
+    int board_w = 11;//每行角点数
+    int board_h = 8;//每列角点数
+
+    int board_n = board_w * board_h;	//角点数量
+    cv::Size board_sz = cv::Size(board_w, board_h);	//标定板大小
+
+    std::vector<std::string> file_path;	//文件路径
+
+    //读取文件夹内全部文件并输出为vector数据
+    cv::glob(img_path, file_path, true);
+
+    //输出文件路径
+    for (int i = 0; i < file_path.size(); i++)
+    {
+        std::cout << "picture " << i + 1 << " path: " << file_path[i] << std::endl;
+
+    }
+
+    //文件夹中图片数量
+    n_boards = file_path.size();
+
+    //包含所有图片的坐标点
+    //每一张图片的坐标点的集合
+    std::vector<std::vector<cv::Point2f>> image_points;//图像坐标点
+    std::vector<std::vector<cv::Point3f>> object_points;//物体坐标系（世界坐标系）
+
+    //上一次处理的时间戳
+    double last_captured_timestamp = 0;
+
+    //图片大小
+    cv::Size image_size;
+
+    //循环遍历图片角点
+    for (int i = 0; i < n_boards; i++)
+    {
+        cv::Mat image_Origin, image; //本次图片
+        //capture >> image0;
+        //读取图片
+        image_Origin = cv::imread(file_path[i]);
+        //图片尺寸
+        image_size = image_Origin.size();
+
+        //缩放图片
+        cv::resize(image_Origin, image, cv::Size(), image_zoom, image_zoom, cv::INTER_LINEAR);
+
+        //该图片中全部角点坐标
+        std::vector<cv::Point2f> corners;
+
+        //寻找棋盘格角点
+        bool found = cv::findChessboardCorners(image, board_sz, corners);
+
+        //未找到时输出错误信息并跳过后续操作
+        if (!found)
+        {
+            std::cout << "Couldn't found correct corners!" << std::endl;
+            continue;
+        }
+
+        cv::Mat image_gray(image);
+
+
+        cv::cvtColor(image, image_gray, cv::COLOR_BGR2GRAY);
+
+        //对寻找到的角点进行亚像素化处理
+        cv::cornerSubPix(image_gray,
+                         corners,
+                         cv::Size(3, 3),
+                         cv::Size(-1, -1),
+                         cv::TermCriteria(cv::TermCriteria::MAX_ITER + cv::TermCriteria::EPS, 30, 0.1));
+
+        //在原图上画出棋盘格角点
+        cv::drawChessboardCorners(image, board_sz, corners, found);
+
+        //记录当前时间
+        double timestamp = (double)clock() / CLOCKS_PER_SEC;
+
+        //计算频率
+        double frequence = timestamp - last_captured_timestamp;
+        //输出当前图片角点查找时间
+        std::cout << "\nCost " << frequence << " s" << std::endl;
+
+        //找到全部角点
+        if (found)
+        {
+            //记录上次时间
+            last_captured_timestamp = timestamp;
+            //image ^= cv::Scalar::all(255);
+
+            //复制找到的角点坐标
+            cv::Mat mcorners(corners);
+
+            //对角点坐标进行复原（缩放后需要放大回原图）
+            mcorners *= (1.0 / image_zoom);
+
+            //将当前图片中的角点坐标保存
+            image_points.push_back(corners);
+
+            //保存世界坐标
+            object_points.push_back(std::vector<cv::Point3f>());
+            std::vector<cv::Point3f>& opts = object_points.back();
+            opts.resize(board_n);
+
+            for (int j = 0; j < board_n; j++)
+            {
+                //角点的世界坐标（x，y，0）
+                opts[j] = cv::Point3f((float)(j % board_w ), (float)(j / board_w ), 0.f);
+            }
+            std::cout << "Collected our " << (int)image_points.size() << " of " << n_boards << " needed chessboard images\n";
+            std::cout << file_path[i] << std::endl;
+
+        }
+
+        //显示
+        cv::imshow("Calibration", image);
+
+        if ((cv::waitKey(30) & 255) == 27)
+        {
+            return -1;
+        }
+    }
+    //for循环终止处
+
+    //销毁标定板图片窗口
+    cv::destroyWindow("Calibration");
+
+    //输出正在标定
+    std::cout << "\n\n*** CALIBRATING THE CAMERA...\n" << std::endl;
+
+    cv::Mat intrinsic_matrix, //相机内参
+    distortion_coeffs;	//畸变参数
+
+    std::vector<cv::Mat> rvecs;//旋转向量
+    std::vector<cv::Mat> tvecs;//平移向量
+
+    //标定相机并记录误差值
+    double err = cv::calibrateCamera(
+            object_points,
+            image_points,
+            image_size,
+            intrinsic_matrix,
+            distortion_coeffs,
+            rvecs, //rvecs
+            tvecs, //tvecs
+            cv::CALIB_ZERO_TANGENT_DIST | cv::CALIB_FIX_PRINCIPAL_POINT);
+
+
+    std::cout << " ***DONE!\\n\nReprojection error is " << err << "\nStoring Intrinsics.xml and Distortions.xml files\n\n";
+
+
+    //输出相机内参矩阵以及畸变参数
+    cv::FileStorage fs("intrinsics.xml", cv::FileStorage::WRITE);
+
+
+    fs  << "image_width" << image_size.width
+        << "image_height"<< image_size.height
+        << "camera_matrix" << intrinsic_matrix
+        << "distortion_coefficients" << distortion_coeffs
+        << "rotation_vectors" << rvecs
+        << "translation_vectors" <<tvecs;
+
+    fs.release();
+
+
+    fs.open("intrinsics.xml", cv::FileStorage::READ);
+    std::cout << "\nimage width: " << (int)fs["image_width"];
+    std::cout << "\nimage height: " << (int)fs["image_height"];
+
+    //从文件中读取参数
+    cv::Mat intrinsic_matrix_loaded, distortion_coeffs_loaded;
+    fs["camera_matrix"] >> intrinsic_matrix_loaded;
+    fs["distortion_coefficients"] >> distortion_coeffs_loaded;
+    //输出参数
+    std::cout << "\nintrinsic matrix:" << intrinsic_matrix_loaded;
+    std::cout << "\ndistortion coefficients:" << distortion_coeffs_loaded << std::endl;
+
+    cv::Mat map1, map2;
+    //https://blog.csdn.net/u013341645/article/details/78710740
+    //计算无畸变和修正转换映射
+    cv::initUndistortRectifyMap(
+            intrinsic_matrix_loaded,
+            distortion_coeffs_loaded,
+            cv::Mat(),	//Rvecs
+            intrinsic_matrix_loaded,
+            image_size,
+            CV_16SC2,
+            map1,
+            map2
+    );
+
+
+    //显示经过矫正后的相机照片
+    int i = 0;
+    while (true)
+    {
+
+        cv::Mat image, image0;
+
+        if (i < file_path.size())
+            image0 = cv::imread(file_path[i]);
+
+        if (image0.empty())break;
+        i++;
+
+        //重映射
+        cv::remap(
+                image0,
+                image,
+                map1,
+                map2,
+                cv::INTER_LINEAR,
+                cv::BORDER_CONSTANT,
+                cv::Scalar()
+        );
+
+        cv::imshow("Undistorted", image);
+        if ((cv::waitKey(30) & 255) == 27)break;
     }
 }
