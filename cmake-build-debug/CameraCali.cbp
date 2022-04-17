@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CameraCali"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\OpenCV\;CMake Files\OpenCV\opencv_build\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CameraCali">
+				<Option output="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug/CameraCali.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="E:/OpenCV/opencv_build"/>
+					<Add directory="E:/OpenCV/opencv/sources/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/core/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/flann/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/hdf/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/imgproc/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/ml/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/phase_unwrapping/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/photo/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/plot/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/quality/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/reg/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/surface_matching/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/xphoto/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/features2d/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/fuzzy/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/gapi/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/hfs/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/imgcodecs/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/line_descriptor/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/saliency/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/videoio/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/calib3d/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/datasets/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/highgui/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/objdetect/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/ovis/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/rgbd/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/shape/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/structured_light/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/video/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/videostab/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/xfeatures2d/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/ximgproc/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/xobjdetect/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/aruco/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/bgsegm/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/bioinspired/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/ccalib/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/dpm/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/face/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/optflow/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/stitching/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/superres/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/tracking/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/stereo/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/world/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/img_hash/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/sfm/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/ts/include"/>
+					<Add directory="D:\SoftWare\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
+					<Add directory="D:\SoftWare\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 CameraCali"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CameraCali/fast">
+				<Option output="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug/CameraCali.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="E:/OpenCV/opencv_build"/>
+					<Add directory="E:/OpenCV/opencv/sources/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/core/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/flann/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/hdf/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/imgproc/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/ml/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/phase_unwrapping/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/photo/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/plot/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/quality/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/reg/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/surface_matching/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/xphoto/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/features2d/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/fuzzy/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/gapi/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/hfs/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/imgcodecs/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/line_descriptor/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/saliency/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/videoio/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/calib3d/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/datasets/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/highgui/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/objdetect/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/ovis/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/rgbd/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/shape/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/structured_light/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/video/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/videostab/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/xfeatures2d/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/ximgproc/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/xobjdetect/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/aruco/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/bgsegm/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/bioinspired/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/ccalib/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/dpm/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/face/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/optflow/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/stitching/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/superres/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/tracking/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/stereo/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/world/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/img_hash/include"/>
+					<Add directory="E:/OpenCV/opencv_contrib-4.1.1/modules/sfm/include"/>
+					<Add directory="E:/OpenCV/opencv/sources/modules/ts/include"/>
+					<Add directory="D:\SoftWare\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
+					<Add directory="D:\SoftWare\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="D:\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 CameraCali/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/shuimujieming/CLionProjects/CameraCali/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\shuimujieming\CLionProjects\CameraCali\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/shuimujieming/CLionProjects/CameraCali/main.cpp">
+			<Option target="CameraCali"/>
+		</Unit>
+		<Unit filename="C:/Users/shuimujieming/CLionProjects/CameraCali/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/shuimujieming/CLionProjects/CameraCali/OpenCV/opencv_build/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv_build\"/>
+		</Unit>
+		<Unit filename="C:/Users/shuimujieming/CLionProjects/CameraCali/OpenCV/opencv_build/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv_build\"/>
+		</Unit>
+		<Unit filename="C:/Users/shuimujieming/CLionProjects/CameraCali/OpenCV/opencv_build/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv_build\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
